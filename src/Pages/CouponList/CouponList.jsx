@@ -50,16 +50,6 @@ const CouponList = () => {
           </div>
         </div>
       </div>
-      <div className="flex px-14 font-medium text-gray-400 items-center justify-between">
-        <div>Rows per page: 8</div>
-        <div className="flex items-center gap-7">
-          1-8 of 80
-          <div className="flex items-center gap-5">
-            <img src={leftArrow} alt="" />
-            <img src={RightArrow} alt="" />
-          </div>
-        </div>
-      </div>
     </>
   );
 };

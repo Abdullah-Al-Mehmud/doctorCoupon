@@ -1,51 +1,32 @@
-import { IoIosArrowForward } from "react-icons/io";
 import { NavLink } from "react-router-dom";
+import leftArrow from "../../assets/leftArrow.png";
+import RightArrow from "../../assets/rightArrow.png";
 
 const CouponDetails = () => {
   const coupons = [
     {
-      name: "AlinMhew",
-      validFrom: "1st Feb 2023",
-      validTill: "22nd Mar 2023",
+      name: "AMR20XOFF",
       status: "Active",
-      visibility: "Show it to All Doctors",
-      discountType: "Percentage",
-      inventory: "200",
-      maxRedemption: "15",
-      appointmentType: "All",
+      validFrom: "19 Oct, 2024",
+      validTill: "19 Oct, 2024",
+      maxRedemption: 12,
+      request: "Accept",
     },
     {
-      name: "Jackock",
-      validFrom: "1st Feb 2023",
-      validTill: "22nd Mar 2023",
-      status: "Inactive",
-      visibility: "Show it to All Doctors",
-      discountType: "Flat",
-      inventory: "200",
-      maxRedemption: "20",
-      appointmentType: "All",
-    },
-    {
-      name: "Shayaan",
-      validFrom: "1st Feb 2023",
-      validTill: "22nd Mar 2023",
-      status: "Inactive",
-      visibility: "Show it to doctors with certain concern",
-      discountType: "Percentage",
-      inventory: "200",
-      maxRedemption: "10",
-      appointmentType: "Chat",
-    },
-    {
-      name: "Alinthew",
-      validFrom: "1st Feb 2023",
-      validTill: "22nd Mar 2023",
+      name: "AMR20XOFF",
       status: "Active",
-      visibility: "Select Particular Docs",
-      discountType: "Flat",
-      inventory: "200",
-      maxRedemption: "5",
-      appointmentType: "Video Call",
+      validFrom: "19 Oct, 2024",
+      validTill: "19 Oct, 2024",
+      maxRedemption: 20,
+      request: "Accept",
+    },
+    {
+      name: "AMR20XOFF",
+      status: "Inactive",
+      validFrom: "18 Oct, 2024",
+      validTill: "18 Oct, 2024",
+      maxRedemption: 50,
+      request: "Accept",
     },
   ];
 
@@ -54,90 +35,79 @@ const CouponDetails = () => {
       <table className="min-w-full">
         <thead>
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
-              <input type="checkbox" className="checkbox" />
+            <th className="py-2 px-4 text-center">
+              <input type="checkbox" />
             </th>
-            <th className="px-6 py-3 text-left text-xs font-bold   uppercase tracking-wider">
-              Name
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+              Coupon Name
             </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
-              Valid From
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
-              Valid Till
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
               Status
             </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
-              Visibility
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+              Valid From
             </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
-              Discount Type
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+              Valid Till
             </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
-              Inventory
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
+              Max Redemption Of Coupon
             </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
-              Max Redemption
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-bold tracking-wider">
-              Appointment Type
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-bold uppercase tracking-wider">
               Usage
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-white">
           {coupons.map((coupon, index) => (
-            <tr key={index}>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <input type="checkbox" className="checkbox" />
+            <tr
+              key={index}
+              className="hover:bg-gray-50 transition-colors duration-200">
+              <td className="py-4 px-4 text-center">
+                <input type="checkbox" />
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <td className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider flex items-center gap-3">
                 {coupon.name}
+                <div className="bg-orange-300 text-orange-500 text-xs w-8 text-center">
+                  new
+                </div>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+
+              <td
+                className={`px-6 py-3 text-left text-xs font-bold uppercase tracking-wider ${
+                  coupon.status === "Active" ? "text-green-500" : "text-red-500"
+                }`}>
+                {coupon.status}
+              </td>
+              <td className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 {coupon.validFrom}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <td className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 {coupon.validTill}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <span
-                  className={`px-2 inline-flex text-xs leading-5 font-bold  ${
-                    coupon.status === "Active"
-                      ? " text-green-500"
-                      : " text-red-500"
-                  }`}>
-                  {coupon.status}
-                </span>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                {coupon.visibility}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                {coupon.discountType}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                {coupon.inventory}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <td className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 {coupon.maxRedemption}
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                {coupon.appointmentType}
-              </td>
               <NavLink to="/usageList">
-                <td className="px-6 py-4 whitespace-nowrap text-lg text-gray-900">
-                  <IoIosArrowForward />
+                <td
+                  className={`px-6 py-3 text-left text-sm font-bold uppercase tracking-wider cursor-pointer`}>
+                  <img src={RightArrow} alt="" />
                 </td>
               </NavLink>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className="flex  pt-14 font-medium  items-center justify-between">
+        <div>Rows per page: 8</div>
+        <div className="flex items-center gap-7">
+          1-8 of 80
+          <div className="flex items-center gap-5">
+            <img src={leftArrow} alt="" />
+            <img src={RightArrow} alt="" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
